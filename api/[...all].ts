@@ -18,9 +18,7 @@ async function getServer(): Promise<Express> {
     expressApp,
   });
 
-  await nestApp.init();
-
-  cachedExpressApp = nestApp.getHttpAdapter().getInstance() as Express;
+  cachedExpressApp = nestApp.getHttpAdapter().getInstance();
 
   return cachedExpressApp;
 }
@@ -28,5 +26,5 @@ async function getServer(): Promise<Express> {
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const app = await getServer();
 
-  return app(req as unknown as Request, res as unknown as Response);
+  app(req as unknown as Request, res as unknown as Response);
 }

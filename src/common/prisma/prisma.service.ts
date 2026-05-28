@@ -20,6 +20,10 @@ export class PrismaService
   }
 
   async onModuleInit() {
+    if (process.env.VERCEL) {
+      return;
+    }
+
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     try {
       await this.$connect();
