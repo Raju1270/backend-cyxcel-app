@@ -1,4 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import '@nestjs/core';
 import express, { type Express, type Request, type Response } from 'express';
 import { createNestApp } from '../src/bootstrap/create-nest-app';
 
